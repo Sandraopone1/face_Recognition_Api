@@ -17,40 +17,10 @@ const db = knex({
   }
 });
 
-// db.select('*').from('users').then(data =>{
-// 	console.log(data);
-// });
-
 const app = express();
 app.use(bodyParser.json());
 app.use(cors())
-const database ={
-	users: [
-		{
-			id: '123',
-			name: 'john',
-			password: 'cookies',
-			email: 'john@gmail.com',
-			entries: 0,
-			joined: new Date()
-		},
-		{
-			id: '124',
-			name: 'sally',
-			password: 'bananas',
-			email: 'saly@gmail.com',
-			entries: 0,
-			joined: new Date()
-		}
-	],
-	login: [
-		{
-			id: '987',
-			hash: '',
-			email: 'john@gmail.com'
-		}
-	]
-}
+
 
 app.get('/', (req, res) =>{res.send('it is working')})
 app.post('/signin', (req,res) =>{signin.handleSignin(req, res, db,bcrypt) }) 
@@ -63,10 +33,3 @@ app.listen(process.env.PORT || 3001, () =>{
 	console.log(`app is running on port ${process.env.PORT}`);
 })
 
-/*
-/ --> res = this is working
-/signing --> post success/fail
-/register --> Post =  user
-/profile/:userId --> GET = user
-/image --> put --> user
-*/
